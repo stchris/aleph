@@ -17,6 +17,10 @@ ENV LANG='en_US.UTF-8'
 RUN groupadd -g 1000 -r app \
     && useradd -m -u 1000 -s /bin/false -g app app
 
+# To install pip packages from a git repository
+# TODO: Remove before merging
+RUN apt-get -qq -y update && apt-get -qq -y install git
+
 # Install Python dependencies
 RUN pip3 install --no-cache-dir -q -U pip setuptools six
 
